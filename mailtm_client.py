@@ -312,25 +312,52 @@ class MailTMClient:
             }
             
             response = self._make_request('GET', '/messages', params=params)
-            messages_data = response.json()['hydra:member']
+            response_data = response.json()
+            
+            # Debug: Log the actual response structure
+            logger.debug(f"Messages API response: {response_data}")
+            
+            # Handle different possible response structures
+            if 'hydra:member' in response_data:
+                messages_data = response_data['hydra:member']
+            elif 'data' in response_data:
+                messages_data = response_data['data']
+            elif isinstance(response_data, list):
+                messages_data = response_data
+            else:
+                # If it's a direct array or different structure
+                messages_data = response_data
+            
+            # Ensure messages_data is a list
+            if not isinstance(messages_data, list):
+                logger.error(f"Unexpected messages response format: {type(messages_data)}")
+                raise ValueError(f"Invalid messages response format: {type(messages_data)}")
             
             messages = []
             for msg_data in messages_data:
-                message = MailMessage(
-                    id=msg_data['id'],
-                    from_address=msg_data['from']['address'],
-                    to_address=msg_data['to'][0]['address'] if msg_data['to'] else '',
-                    subject=msg_data['subject'],
-                    intro=msg_data['intro'],
-                    seen=msg_data['seen'],
-                    is_deleted=msg_data['isDeleted'],
-                    has_attachments=msg_data['hasAttachments'],
-                    size=msg_data['size'],
-                    download_url=msg_data['downloadUrl'],
-                    created_at=msg_data['createdAt'],
-                    updated_at=msg_data['updatedAt']
-                )
-                messages.append(message)
+                try:
+                    # Handle different message structures
+                    if isinstance(msg_data, dict):
+                        message = MailMessage(
+                            id=msg_data.get('id', ''),
+                            from_address=msg_data.get('from', {}).get('address', '') if isinstance(msg_data.get('from'), dict) else str(msg_data.get('from', '')),
+                            to_address=msg_data.get('to', [{}])[0].get('address', '') if msg_data.get('to') and isinstance(msg_data.get('to'), list) else '',
+                            subject=msg_data.get('subject', ''),
+                            intro=msg_data.get('intro', ''),
+                            seen=msg_data.get('seen', False),
+                            is_deleted=msg_data.get('isDeleted', False),
+                            has_attachments=msg_data.get('hasAttachments', False),
+                            size=msg_data.get('size', 0),
+                            download_url=msg_data.get('downloadUrl', ''),
+                            created_at=msg_data.get('createdAt', ''),
+                            updated_at=msg_data.get('updatedAt', '')
+                        )
+                        messages.append(message)
+                    else:
+                        logger.warning(f"Skipping invalid message data: {msg_data}")
+                except Exception as e:
+                    logger.warning(f"Error processing message data: {e}, skipping...")
+                    continue
             
             # Cache the result
             if use_cache:

@@ -39,6 +39,10 @@ install(show_locals=False)
 
 console = Console()
 
+def clear_screen():
+    """Clear the console screen"""
+    os.system('clear' if os.name == 'posix' else 'cls')
+
 
 class PryvonTempMailApp:
     """Enhanced console application for Pryvon Temp Mail"""
@@ -75,6 +79,7 @@ class PryvonTempMailApp:
     
     def show_welcome(self):
         """Display enhanced welcome screen"""
+        clear_screen()
         welcome_text = Text("Pryvon Temp Mail", style="bold blue")
         subtitle = Text("Professional Temporary Email Management Tool", style="italic")
         version = Text("v2.0.0", style="dim")
@@ -102,6 +107,7 @@ class PryvonTempMailApp:
     
     def show_main_menu(self):
         """Display enhanced main menu"""
+        clear_screen()
         if self.client.is_logged_in():
             account = self.client.current_account
             stats = self.client.get_account_stats()
@@ -138,7 +144,7 @@ class PryvonTempMailApp:
                 "❌ Exit"
             ]
         
-        table = Table(title="Main Menu", box=box.ROUNDED, border_style="blue")
+        table = Table(title="Pryvon Temp Mail Client", box=box.ROUNDED, border_style="blue")
         table.add_column("Option", style="cyan", no_wrap=True)
         table.add_column("Description", style="white")
         
@@ -173,6 +179,7 @@ class PryvonTempMailApp:
     
     def show_settings_menu(self):
         """Display and manage application settings"""
+        clear_screen()
         console.print("[bold blue]Settings[/bold blue]")
         console.print()
         
@@ -236,6 +243,7 @@ class PryvonTempMailApp:
     
     def create_account(self):
         """Create a new mail.tm account with enhanced validation"""
+        clear_screen()
         console.print("[bold blue]Creating New Account[/bold blue]")
         console.print()
         
@@ -280,7 +288,30 @@ class PryvonTempMailApp:
                 console.print("[red]No active domains available[/red]")
                 return
             
-            domain = Prompt.ask("Enter domain", choices=active_domains)
+            # Show available domains with numbers for easy selection
+            console.print("Available domains:")
+            for i, domain_name in enumerate(active_domains, 1):
+                console.print(f"  {i}. {domain_name}")
+            
+            # Get domain selection
+            if len(active_domains) == 1:
+                # If only one domain, use it automatically
+                domain = active_domains[0]
+                console.print(f"[green]Using domain: {domain}[/green]")
+            else:
+                # If multiple domains, let user choose
+                domain_choice = Prompt.ask(f"Select domain (1-{len(active_domains)}) or press Enter for first", default="1")
+                try:
+                    choice_num = int(domain_choice)
+                    if 1 <= choice_num <= len(active_domains):
+                        domain = active_domains[choice_num - 1]
+                    else:
+                        domain = active_domains[0]
+                        console.print(f"[yellow]Invalid choice, using first domain: {domain}[/yellow]")
+                except ValueError:
+                    # If user just pressed Enter or entered invalid input, use first domain
+                    domain = active_domains[0]
+                    console.print(f"[yellow]Using first domain: {domain}[/yellow]")
             
             # Generate password
             password = Prompt.ask("Enter password (or press Enter for random)")
@@ -319,6 +350,7 @@ class PryvonTempMailApp:
     
     def login_account(self):
         """Login to existing account with enhanced error handling"""
+        clear_screen()
         console.print("[bold blue]Login to Account[/bold blue]")
         console.print()
         
@@ -349,6 +381,7 @@ class PryvonTempMailApp:
             console.print("[red]Please login first[/red]")
             return
         
+        clear_screen()
         try:
             with console.status("[bold green]Fetching messages...", spinner="dots"):
                 messages = self.client.get_messages()
@@ -356,6 +389,11 @@ class PryvonTempMailApp:
             if not messages:
                 console.print("[yellow]No messages in mailbox[/yellow]")
                 return
+            
+            # Debug: Show message count
+            console.print(f"[dim]Debug: Retrieved {len(messages)} messages[/dim]")
+            if messages and len(messages) > 0:
+                console.print(f"[dim]First message structure: {messages[0]}[/dim]")
             
             # Display messages in a table
             message_table = Table(title="Mailbox", box=box.ROUNDED)
@@ -421,6 +459,7 @@ class PryvonTempMailApp:
             console.print("[red]Please login first[/red]")
             return
         
+        clear_screen()
         try:
             # First show message list
             messages = self.client.get_messages()
@@ -595,6 +634,7 @@ class PryvonTempMailApp:
             console.print("[red]Please login first[/red]")
             return
         
+        clear_screen()
         try:
             account_stats = self.client.get_account_stats()
             cache_stats = self.client.get_cache_stats()
@@ -709,7 +749,7 @@ class PryvonTempMailApp:
                 if self.running:
                     console.print()
                     Prompt.ask("Press Enter to continue...")
-                    console.clear()
+                    clear_screen()
                 
             except KeyboardInterrupt:
                 console.print("\n[yellow]Interrupted by user[/yellow]")
@@ -718,9 +758,11 @@ class PryvonTempMailApp:
                 console.print(f"[red]Unexpected error: {str(e)}[/red]")
                 logger.error(f"Unexpected error: {e}")
                 Prompt.ask("Press Enter to continue...")
+                clear_screen()
         
         # Cleanup
         self.cleanup()
+        clear_screen()
         console.print("[green]Goodbye![/green]")
 
 
