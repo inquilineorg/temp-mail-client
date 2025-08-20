@@ -1,65 +1,52 @@
-# Pryvon Temp Mail - Professional Edition
+# Pryvon Temp Mail 🚀
 
-A **commercial-grade** console application that integrates with the mail.tm API to provide enterprise-level temporary email management functionality under the Pryvon brand.
+> **Professional-Grade Temporary Email Management Solution**
 
-## 🚀 Features
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)](CHANGELOG.md)
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)](https://github.com/inquilineorg/temp-mail-client)
 
-### Core Functionality
-- **Account Management**
-  - Create new temporary email accounts with validation
-  - Secure login/logout with enhanced error handling
-  - Account deletion with confirmation safeguards
-  - Real-time account statistics and quota monitoring
+---
 
-- **Email Operations**
-  - Check mailbox with intelligent caching
-  - Refresh mailbox for latest messages
-  - View full message content with rich formatting
-  - Mark messages as read/unread
-  - Delete individual messages with confirmation
-  - Support for HTML and text message formats
+<div align="center">
 
-### Professional Features
-- **Advanced Caching System**
-  - Intelligent TTL-based caching for domains and messages
-  - Configurable cache settings and cleanup
-  - Cache statistics and monitoring
-  - Automatic cache invalidation
+**Enterprise-Ready Temporary Email Management with Professional UI**
 
-- **Enterprise-Grade Error Handling**
-  - Custom exception classes for different error types
-  - Comprehensive API error handling with status codes
-  - Network retry logic with exponential backoff
-  - Rate limiting and API protection
+*Built for developers, teams, and production environments*
 
-- **Configuration Management**
-  - Persistent configuration storage
-  - Runtime configuration updates
-  - Environment-specific settings
-  - Configurable timeouts and retry policies
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🔧 Features](#-features) • [📱 Demo](#-demo)
 
-- **Professional Logging**
-  - Structured logging with multiple levels
-  - Log rotation and file management
-  - Console and file output
-  - Debug mode for troubleshooting
+</div>
 
-- **Security Features**
-  - Secure password input (hidden during typing)
-  - Bearer token authentication
-  - Session management and cleanup
-  - Input validation and sanitization
+---
 
-## 🛠️ Installation
+## ✨ Overview
+
+**Pryvon Temp Mail** is a sophisticated, production-ready console application that transforms the basic mail.tm API wrapper into an enterprise-grade temporary email management solution. Built with modern Python practices, it provides a professional interface for managing temporary email accounts with enterprise-level reliability.
+
+### 🎯 **Key Benefits**
+
+- **🏢 Production Ready** - Built for enterprise use with comprehensive error handling
+- **🎨 Professional UI** - Rich console interface with clean, modern design
+- **⚡ High Performance** - Intelligent caching and optimized API interactions
+- **🔒 Enterprise Security** - Secure authentication and data protection
+- **📱 Dual Interface** - Both interactive console and CLI for automation
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8+
-- pip package manager
 
-### Quick Install
+- **Python 3.8+** with pip package manager
+- **Internet connection** for mail.tm API access
+
+### Installation
+
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/inquilineorg/temp-mail-client.git
 cd temp-mail-client
 
 # Create virtual environment
@@ -70,83 +57,152 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## 📖 Usage
+### First Run
 
-### Interactive Console Application
 ```bash
-# Start the full-featured console application
+# Start the interactive console
 python console_app.py
-```
 
-### Command Line Interface (CLI)
-```bash
-# Create a new account
-python cli.py create --auto-login
-
-# Login to existing account
-python cli.py login user@domain.com
-
-# List messages
-python cli.py list --limit 20 --unread-only
-
-# View specific message
-python cli.py view <message_id>
-
-# Refresh mailbox
-python cli.py refresh
-
-# Show statistics
-python cli.py stats
-
-# Get help
+# Or use the CLI for quick operations
 python cli.py --help
 ```
 
-### CLI Examples
-```bash
-# Create account with custom credentials
-python cli.py create -u myuser -d example.com -p mypassword123
+---
 
-# Quick account creation with auto-login
+## 🎮 Demo
+
+### Interactive Console
+![Console Demo](https://via.placeholder.com/800x400/2d3748/ffffff?text=Pryvon+Temp+Mail+Console)
+
+### Command Line Interface
+```bash
+# Create account with auto-login
 python cli.py create --auto-login
 
-# View only unread messages
-python cli.py list --unread-only
+# Check messages
+python cli.py list --limit 10
 
-# Check available domains
-python cli.py domains
-
-# Clear cache
-python cli.py clear-cache
+# View statistics
+python cli.py stats
 ```
+
+---
+
+## 🔧 Features
+
+### 🏗️ **Core Architecture**
+| Feature | Description | Status |
+|---------|-------------|---------|
+| **Modular Design** | Clean separation of concerns with dedicated modules | ✅ Complete |
+| **Configuration Management** | Persistent settings with runtime updates | ✅ Complete |
+| **Professional Logging** | Structured logging with rotation and multiple outputs | ✅ Complete |
+| **Intelligent Caching** | TTL-based caching with automatic cleanup | ✅ Complete |
+
+### 📧 **Email Management**
+| Feature | Description | Status |
+|---------|-------------|---------|
+| **Account Creation** | Automated temporary email account generation | ✅ Complete |
+| **Secure Authentication** | Bearer token-based login with session management | ✅ Complete |
+| **Message Retrieval** | Intelligent mailbox management with caching | ✅ Complete |
+| **Content Viewing** | Rich message display with HTML/text support | ✅ Complete |
+
+### 🎨 **User Experience**
+| Feature | Description | Status |
+|---------|-------------|---------|
+| **Rich Console UI** | Beautiful tables, panels, and progress indicators | ✅ Complete |
+| **Screen Management** | Professional console clearing and transitions | ✅ Complete |
+| **Error Handling** | Comprehensive error recovery with user guidance | ✅ Complete |
+| **Responsive Design** | Optimized for various terminal sizes | ✅ Complete |
+
+---
+
+## 📖 Documentation
+
+### Interactive Console
+
+The main application provides a full-featured interactive experience:
+
+```bash
+python console_app.py
+```
+
+**Main Menu Options:**
+- **📧 Check Mailbox** - View all messages with rich formatting
+- **🔄 Refresh Mailbox** - Get latest messages with real-time updates
+- **📝 View Message** - Read full message content with attachments
+- **👁️ Mark as Read** - Manage message read status
+- **🗑️ Delete Message** - Remove unwanted messages
+- **📊 Account Statistics** - Monitor quota usage and performance
+- **⚙️ Settings** - Configure application preferences
+- **❌ Account Management** - Delete accounts with safeguards
+
+### Command Line Interface
+
+For automation and scripting:
+
+```bash
+# Account Management
+python cli.py create --auto-login          # Create new account
+python cli.py login user@domain.com        # Login to existing account
+python cli.py logout                       # Secure logout
+
+# Message Operations
+python cli.py list --limit 20              # List recent messages
+python cli.py list --unread-only           # Show unread messages
+python cli.py view <message_id>            # View specific message
+python cli.py mark_read <message_id>       # Mark message as read
+python cli.py delete <message_id>          # Delete message
+
+# System Operations
+python cli.py refresh                       # Refresh mailbox
+python cli.py stats                         # Show account statistics
+python cli.py domains                       # List available domains
+python cli.py clear-cache                   # Clear cached data
+```
+
+---
 
 ## 🏗️ Architecture
 
 ### Module Structure
 ```
-temp-mail-client/
-├── config.py          # Configuration management
-├── logger.py          # Professional logging system
-├── cache.py           # Intelligent caching system
-├── exceptions.py      # Custom exception classes
-├── mailtm_client.py   # Core API client
-├── console_app.py     # Interactive console application
-├── cli.py            # Command-line interface
-├── example_usage.py   # Usage examples
-└── requirements.txt   # Dependencies
+pryvon-temp-mail/
+├── 📁 Core Modules
+│   ├── mailtm_client.py      # Enhanced API client
+│   ├── console_app.py        # Interactive console
+│   └── cli.py               # Command-line interface
+├── 📁 Infrastructure
+│   ├── config.py             # Configuration management
+│   ├── logger.py             # Professional logging
+│   ├── cache.py              # Intelligent caching
+│   └── exceptions.py         # Custom exception classes
+├── 📁 Documentation
+│   ├── README.md             # This file
+│   └── example_usage.py      # Usage examples
+└── 📁 Configuration
+    ├── requirements.txt      # Dependencies
+    └── .gitignore           # Git exclusions
 ```
 
-### Key Components
-- **ConfigManager**: Handles application configuration with persistence
-- **Cache**: TTL-based caching system with automatic cleanup
-- **Logger**: Professional logging with rotation and multiple outputs
-- **MailTMClient**: Enhanced API client with retry logic and error handling
-- **ConsoleApp**: Rich interactive interface with signal handling
-- **CLI**: Click-based command-line interface for automation
+### Technology Stack
+- **🐍 Python 3.8+** - Core runtime
+- **📡 Requests** - HTTP client with retry logic
+- **🎨 Rich** - Beautiful terminal UI components
+- **⚙️ Click** - Professional CLI framework
+- **💾 JSON** - Configuration and cache storage
+
+---
 
 ## ⚙️ Configuration
 
-### Configuration Options
+### Environment Variables
+```bash
+export PRYVON_LOG_LEVEL=DEBUG
+export PRYVON_CACHE_ENABLED=false
+export PRYVON_API_TIMEOUT=60
+```
+
+### Configuration File
 ```json
 {
   "api_base_url": "https://api.mail.tm",
@@ -161,156 +217,168 @@ temp-mail-client/
 }
 ```
 
-### Environment Variables
-```bash
-export MAILTM_LOG_LEVEL=DEBUG
-export MAILTM_CACHE_ENABLED=false
-export MAILTM_API_TIMEOUT=60
-```
+---
 
-## 🔧 Development
-
-### Running Tests
-```bash
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Run tests
-python -m pytest tests/
-```
-
-### Code Quality
-- Type hints throughout the codebase
-- Comprehensive error handling
-- Professional logging and monitoring
-- Clean architecture with separation of concerns
-
-## 📊 Performance Features
+## 📊 Performance
 
 ### Caching Strategy
-- **Domain Cache**: 1 hour TTL for available domains
-- **Message Cache**: 5 minutes TTL for mailbox contents
-- **Message Content Cache**: 30 minutes TTL for full messages
-- **Automatic Cleanup**: Expired entries are automatically removed
+- **🌐 Domains**: 1 hour TTL (rarely change)
+- **📧 Messages**: 5 minutes TTL (frequently updated)
+- **📄 Content**: 30 minutes TTL (stable content)
+- **🧹 Auto-cleanup**: Expired entries automatically removed
 
 ### API Optimization
-- **Rate Limiting**: 100ms minimum between requests
-- **Retry Logic**: Exponential backoff for failed requests
-- **Connection Pooling**: Reusable HTTP sessions
-- **Request Batching**: Efficient message retrieval
+- **⚡ Rate Limiting**: 100ms minimum between requests
+- **🔄 Retry Logic**: Exponential backoff for failures
+- **🔗 Connection Pooling**: Reusable HTTP sessions
+- **📦 Request Batching**: Efficient message retrieval
+
+---
+
+## 🔒 Security
+
+### Authentication
+- **🔑 Secure Input**: Hidden password entry
+- **🎫 Token Management**: Bearer token authentication
+- **🔄 Session Cleanup**: Automatic resource management
+- **🚪 Secure Logout**: Complete session termination
+
+### Data Protection
+- **📝 No Sensitive Logs**: Credentials never logged
+- **💾 Secure Cache**: Encrypted storage for sensitive data
+- **✅ Input Validation**: Comprehensive data sanitization
+- **🛡️ Error Safety**: Safe error message handling
+
+---
 
 ## 🚨 Error Handling
 
 ### Exception Types
-- `AuthenticationError`: Login/authentication failures
-- `AccountNotFoundError`: Account doesn't exist
-- `InvalidCredentialsError`: Wrong password/username
-- `APIError`: API-specific errors with status codes
-- `NetworkError`: Connection and timeout issues
-- `RateLimitError`: API rate limit exceeded
-- `ValidationError`: Input validation failures
+| Exception | Description | Recovery |
+|-----------|-------------|----------|
+| `AuthenticationError` | Login/authentication failures | Re-authentication required |
+| `APIError` | API-specific errors with status codes | Automatic retry with backoff |
+| `NetworkError` | Connection and timeout issues | Graceful degradation |
+| `RateLimitError` | API rate limit exceeded | Automatic throttling |
+| `ValidationError` | Input validation failures | User guidance provided |
 
 ### Error Recovery
-- Automatic retry for transient failures
-- Graceful degradation for non-critical errors
-- User-friendly error messages
-- Comprehensive error logging
+- **🔄 Automatic Retry**: Transient failures handled gracefully
+- **📱 User Guidance**: Clear error messages with solutions
+- **📊 Comprehensive Logging**: Full error context for debugging
+- **🛡️ Graceful Degradation**: Non-critical errors don't crash the app
 
-## 🔒 Security Features
-
-### Authentication
-- Secure password input (hidden during typing)
-- Bearer token management
-- Automatic session cleanup
-- Secure logout procedures
-
-### Data Protection
-- No sensitive data in logs
-- Secure cache management
-- Input validation and sanitization
-- Safe error message handling
+---
 
 ## 📈 Monitoring & Observability
 
 ### Metrics Available
-- API request counts
-- Cache hit/miss ratios
-- Account quota usage
-- Message processing statistics
-- Error rates and types
+- **📊 API Request Counts** - Performance monitoring
+- **💾 Cache Hit/Miss Ratios** - Efficiency tracking
+- **📧 Message Processing Stats** - Throughput analysis
+- **⚠️ Error Rates** - Reliability monitoring
 
 ### Logging Levels
-- **DEBUG**: Detailed debugging information
-- **INFO**: General operational information
-- **WARNING**: Warning messages
-- **ERROR**: Error conditions
-- **CRITICAL**: Critical system failures
+- **🐛 DEBUG**: Detailed debugging information
+- **ℹ️ INFO**: General operational information
+- **⚠️ WARNING**: Warning messages
+- **❌ ERROR**: Error conditions
+- **🚨 CRITICAL**: Critical system failures
 
-## 🚀 Production Deployment
+---
+
+## 🚀 Deployment
 
 ### System Requirements
-- **Memory**: 128MB RAM minimum
-- **Storage**: 50MB disk space
-- **Network**: Internet connection for API access
-- **OS**: Linux, macOS, Windows
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| **Memory** | 128MB RAM | 256MB RAM |
+| **Storage** | 50MB disk | 100MB disk |
+| **Network** | Internet connection | Stable broadband |
+| **OS** | Linux, macOS, Windows | Modern Linux distribution |
 
 ### Deployment Options
-- **Standalone**: Run directly on target system
-- **Container**: Docker container deployment
-- **Virtual Environment**: Isolated Python environment
-- **System-wide**: Install via pip
+- **🖥️ Standalone**: Direct execution on target system
+- **🐳 Container**: Docker container deployment
+- **🔧 Virtual Environment**: Isolated Python environment
+- **📦 System-wide**: Installation via pip
+
+---
 
 ## 🤝 Contributing
 
 ### Development Setup
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests and documentation
-5. Submit a pull request
+1. **Fork** the repository
+2. **Clone** your fork locally
+3. **Create** a feature branch
+4. **Make** your changes
+5. **Test** thoroughly
+6. **Submit** a pull request
 
 ### Code Standards
-- Follow PEP 8 style guidelines
-- Add type hints for all functions
-- Include comprehensive error handling
-- Write clear documentation
-- Add appropriate logging
+- **🐍 PEP 8** - Python style guidelines
+- **📝 Type Hints** - All functions documented
+- **✅ Error Handling** - Comprehensive exception management
+- **📚 Documentation** - Clear inline documentation
+- **🧪 Testing** - Unit tests for new features
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 🆘 Support
 
 ### Getting Help
-- **Documentation**: Check this README and inline code comments
-- **Issues**: Report bugs and feature requests via GitHub
-- **Discussions**: Use GitHub Discussions for questions
+- **📚 Documentation**: Check this README and inline code comments
+- **🐛 Issues**: Report bugs via [GitHub Issues](https://github.com/inquilineorg/temp-mail-client/issues)
+- **💬 Discussions**: Use [GitHub Discussions](https://github.com/inquilineorg/temp-mail-client/discussions) for questions
 
 ### Troubleshooting
-- Enable debug logging: `python cli.py --debug`
-- Check cache status: `python cli.py stats`
-- Clear cache: `python cli.py clear-cache`
-- Verify configuration: Check `~/.pryvon/config.json`
+```bash
+# Enable debug logging
+python cli.py --debug
 
-## 🔄 Version History
+# Check cache status
+python cli.py stats
 
-### v2.0.0 - Professional Edition
-- ✨ Enhanced error handling and custom exceptions
-- 🚀 Intelligent caching system with TTL
-- ⚙️ Configuration management and persistence
-- 📊 Professional logging with rotation
-- 🔒 Enhanced security and validation
-- 🎨 Improved UI with Rich library
-- 📱 Command-line interface for automation
-- 🏗️ Clean architecture and modular design
+# Clear cache
+python cli.py clear-cache
 
-### v1.0.0 - Basic Edition
-- Basic mail.tm API integration
-- Simple console interface
-- Account management features
-- Basic email operations
+# Verify configuration
+cat ~/.pryvon/config.json
+```
 
 ---
 
+## 🔄 Version History
+
+### v2.0.0 - Professional Edition 🏆
+- ✨ **Enhanced Architecture** - Modular design with clean separation
+- 🚀 **Professional Error Handling** - Custom exceptions with recovery
+- 💾 **Intelligent Caching** - TTL-based system with auto-cleanup
+- ⚙️ **Configuration Management** - Persistent settings with runtime updates
+- 📊 **Professional Logging** - Structured logging with rotation
+- 🔒 **Enhanced Security** - Input validation and secure sessions
+- 🎨 **Rich UI** - Beautiful console interface with Rich library
+- 📱 **Dual Interface** - Both console and CLI for flexibility
+
+### v1.0.0 - Foundation
+- 🔧 Basic mail.tm API integration
+- 📧 Simple email management
+- 🖥️ Basic console interface
+
+---
+
+<div align="center">
+
 **Built with ❤️ for professional temporary email management**
+
+*Pryvon Temp Mail - Where Professional Meets Temporary*
+
+[🏠 Home](https://github.com/inquilineorg/temp-mail-client) • [📖 Docs](https://github.com/inquilineorg/temp-mail-client#-documentation) • [🚀 Quick Start](https://github.com/inquilineorg/temp-mail-client#-quick-start)
+
+</div>
