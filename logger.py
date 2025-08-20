@@ -9,7 +9,7 @@ from logging.handlers import RotatingFileHandler
 from config import config
 
 
-def setup_logger(name: str = "mailtm_client") -> logging.Logger:
+def setup_logger(name: str = "pryvon_temp_mail") -> logging.Logger:
     """Setup and configure logger"""
     logger = logging.getLogger(name)
     
@@ -36,7 +36,7 @@ def setup_logger(name: str = "mailtm_client") -> logging.Logger:
     
     # File handler with rotation
     try:
-        log_file = Path(config.get('log_file', '~/.mailtm/mailtm.log')).expanduser()
+        log_file = Path(config.get('log_file', '~/.pryvon/pryvon.log')).expanduser()
         log_file.parent.mkdir(parents=True, exist_ok=True)
         
         file_handler = RotatingFileHandler(

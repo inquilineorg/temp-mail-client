@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Mail.tm CLI - Command Line Interface
+Pryvon Temp Mail CLI - Command Line Interface
 Quick operations without the full interactive console
 """
 
@@ -21,10 +21,10 @@ console = Console()
 
 
 @click.group()
-@click.version_option(version="2.0.0", prog_name="mailtm-cli")
+@click.version_option(version="2.0.0", prog_name="pryvon-temp-mail")
 @click.option('--debug', is_flag=True, help='Enable debug logging')
 def cli(debug):
-    """Mail.tm Command Line Interface"""
+    """Pryvon Temp Mail Command Line Interface"""
     if debug:
         config.set('log_level', 'DEBUG')
         console.print("[yellow]Debug mode enabled[/yellow]")
@@ -118,7 +118,7 @@ def list(limit, unread_only):
         client = MailTMClient()
         
         if not client.is_logged_in():
-            console.print("[red]Please login first using: mailtm-cli login <address>[/red]")
+            console.print("[red]Please login first using: pryvon-temp-mail login <address>[/red]")
             return
         
         with console.status("Fetching messages..."):
@@ -172,7 +172,7 @@ def view(message_id):
         client = MailTMClient()
         
         if not client.is_logged_in():
-            console.print("[red]Please login first using: mailtm-cli login <address>[/red]")
+            console.print("[red]Please login first using: pryvon-temp-mail login <address>[/red]")
             return
         
         with console.status("Fetching message..."):
@@ -211,7 +211,7 @@ def mark_read(message_id):
         client = MailTMClient()
         
         if not client.is_logged_in():
-            console.print("[red]Please login first using: mailtm-cli login <address>[/red]")
+            console.print("[red]Please login first using: pryvon-temp-mail login <address>[/red]")
             return
         
         with console.status("Marking message as read..."):
@@ -232,7 +232,7 @@ def delete(message_id):
         client = MailTMClient()
         
         if not client.is_logged_in():
-            console.print("[red]Please login first using: mailtm-cli login <address>[/red]")
+            console.print("[red]Please login first using: pryvon-temp-mail login <address>[/red]")
             return
         
         with console.status("Deleting message..."):
@@ -252,7 +252,7 @@ def refresh():
         client = MailTMClient()
         
         if not client.is_logged_in():
-            console.print("[red]Please login first using: mailtm-cli login <address>[/red]")
+            console.print("[red]Please login first using: pryvon-temp-mail login <address>[/red]")
             return
         
         with console.status("Refreshing mailbox..."):
@@ -277,7 +277,7 @@ def stats():
         client = MailTMClient()
         
         if not client.is_logged_in():
-            console.print("[red]Please login first using: mailtm-cli login <address>[/red]")
+            console.print("[red]Please login first using: pryvon-temp-mail login <address>[/red]")
             return
         
         account_stats = client.get_account_stats()

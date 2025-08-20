@@ -58,13 +58,26 @@ class MailTMClient:
         """Create a session with retry logic and proper configuration"""
         session = requests.Session()
         
-        # Configure retry strategy
-        retry_strategy = Retry(
-            total=config.get('max_retries', 3),
-            status_forcelist=[429, 500, 502, 503, 504],
-            method_whitelist=["HEAD", "GET", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"],
-            backoff_factor=1
-        )
+        # Configure retry strategy with version compatibility
+        retry_kwargs = {
+            'total': config.get('max_retries', 3),
+            'status_forcelist': [429, 500, 502, 503, 504],
+            'backoff_factor': 1
+        }
+        
+        # Handle urllib3 version compatibility
+        try:
+            # Try new parameter name first (urllib3 2.0+)
+            retry_strategy = Retry(
+                **retry_kwargs,
+                allowed_methods=["HEAD", "GET", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"]
+            )
+        except TypeError:
+            # Fall back to old parameter name (urllib3 < 2.0)
+            retry_strategy = Retry(
+                **retry_kwargs,
+                method_whitelist=["HEAD", "GET", "OPTIONS", "POST", "PUT", "PATCH", "DELETE"]
+            )
         
         adapter = HTTPAdapter(max_retries=retry_strategy)
         session.mount("http://", adapter)
@@ -72,7 +85,7 @@ class MailTMClient:
         
         # Set default headers
         session.headers.update({
-            'User-Agent': 'MailTM-Console-Client/1.0',
+            'User-Agent': 'Pryvon-Temp-Mail-Client/1.0',
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         })
@@ -145,7 +158,26 @@ class MailTMClient:
         
         try:
             response = self._make_request('GET', '/domains')
-            domains = response.json()['hydra:member']
+            response_data = response.json()
+            
+            # Debug: Log the actual response structure
+            logger.debug(f"Domains API response: {response_data}")
+            
+            # Handle different possible response structures
+            if 'hydra:member' in response_data:
+                domains = response_data['hydra:member']
+            elif 'data' in response_data:
+                domains = response_data['data']
+            elif isinstance(response_data, list):
+                domains = response_data
+            else:
+                # If it's a direct array or different structure
+                domains = response_data
+            
+            # Ensure domains is a list
+            if not isinstance(domains, list):
+                logger.error(f"Unexpected domains response format: {type(domains)}")
+                raise ValueError(f"Invalid domains response format: {type(domains)}")
             
             # Cache the result
             if use_cache:

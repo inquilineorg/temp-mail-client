@@ -9,13 +9,13 @@ import time
 
 
 def example_usage():
-    """Example of using the MailTMClient programmatically"""
+    """Example of using the PryvonTempMailClient programmatically"""
     
     # Initialize the client
     client = MailTMClient()
     
     try:
-        print("=== Mail.tm Client Example ===\n")
+        print("=== Pryvon Temp Mail Client Example ===\n")
         
         # 1. Get available domains
         print("1. Fetching available domains...")
@@ -113,7 +113,7 @@ def interactive_example():
     client = MailTMClient()
     
     try:
-        print("=== Interactive Mail.tm Client Example ===\n")
+        print("=== Interactive Pryvon Temp Mail Client Example ===\n")
         
         # Get domains
         print("Fetching available domains...")

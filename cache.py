@@ -14,7 +14,7 @@ class Cache:
     """Simple file-based cache with TTL support"""
     
     def __init__(self, cache_file: str = None):
-        self.cache_file = Path(cache_file or config.get('cache_file', '~/.mailtm/cache.json')).expanduser()
+        self.cache_file = Path(cache_file or config.get('cache_file', '~/.pryvon/cache.json')).expanduser()
         self.cache: Dict[str, Dict[str, Any]] = {}
         self.load_cache()
     

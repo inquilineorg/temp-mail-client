@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Mail.tm Console Client - Enhanced Commercial Grade Version
+Pryvon Temp Mail - Enhanced Commercial Grade Version
 A comprehensive console application for managing temporary email accounts
 """
 
@@ -40,8 +40,8 @@ install(show_locals=False)
 console = Console()
 
 
-class MailTMConsoleApp:
-    """Enhanced console application for mail.tm"""
+class PryvonTempMailApp:
+    """Enhanced console application for Pryvon Temp Mail"""
     
     def __init__(self):
         self.client = MailTMClient()
@@ -71,11 +71,11 @@ class MailTMConsoleApp:
     
     def generate_random_string(self, length: int = 8) -> str:
         """Generate a random string for usernames"""
-        return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length)
+        return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
     
     def show_welcome(self):
         """Display enhanced welcome screen"""
-        welcome_text = Text("Mail.tm Console Client", style="bold blue")
+        welcome_text = Text("Pryvon Temp Mail", style="bold blue")
         subtitle = Text("Professional Temporary Email Management Tool", style="italic")
         version = Text("v2.0.0", style="dim")
         
@@ -247,6 +247,8 @@ class MailTMConsoleApp:
             if not domains:
                 console.print("[red]No domains available[/red]")
                 return
+            
+
             
             # Show available domains
             domain_table = Table(title="Available Domains", box=box.ROUNDED)
@@ -725,7 +727,7 @@ class MailTMConsoleApp:
 def main():
     """Main entry point with enhanced error handling"""
     try:
-        app = MailTMConsoleApp()
+        app = PryvonTempMailApp()
         app.run()
     except KeyboardInterrupt:
         console.print("\n[yellow]Goodbye![/yellow]")

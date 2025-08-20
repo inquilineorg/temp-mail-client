@@ -1,6 +1,6 @@
-# Mail.tm Console Client - Professional Edition
+# Pryvon Temp Mail - Professional Edition
 
-A **commercial-grade** console application that integrates with the mail.tm API to provide enterprise-level temporary email management functionality.
+A **commercial-grade** console application that integrates with the mail.tm API to provide enterprise-level temporary email management functionality under the Pryvon brand.
 
 ## 🚀 Features
 
@@ -291,7 +291,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Enable debug logging: `python cli.py --debug`
 - Check cache status: `python cli.py stats`
 - Clear cache: `python cli.py clear-cache`
-- Verify configuration: Check `~/.mailtm/config.json`
+- Verify configuration: Check `~/.pryvon/config.json`
 
 ## 🔄 Version History
 

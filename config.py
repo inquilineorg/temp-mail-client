@@ -24,23 +24,23 @@ class AppConfig:
     
     # Security Configuration
     save_credentials: bool = False
-    credentials_file: str = "~/.mailtm/credentials.json"
+    credentials_file: str = "~/.pryvon/credentials.json"
     
     # Logging Configuration
     log_level: str = "INFO"
-    log_file: str = "~/.mailtm/mailtm.log"
+    log_file: str = "~/.pryvon/pryvon.log"
     log_format: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     
     # Cache Configuration
     cache_enabled: bool = True
     cache_ttl: int = 300  # 5 minutes
-    cache_file: str = "~/.mailtm/cache.json"
+    cache_file: str = "~/.pryvon/cache.json"
 
 
 class ConfigManager:
     """Manages application configuration"""
     
-    def __init__(self, config_file: str = "~/.mailtm/config.json"):
+    def __init__(self, config_file: str = "~/.pryvon/config.json"):
         self.config_file = Path(config_file).expanduser()
         self.config = AppConfig()
         self.load_config()
