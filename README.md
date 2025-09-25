@@ -15,8 +15,7 @@
 
 *Built for developers, teams, and production environments*
 
-[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🔧 Features](#-features) • [📱 Demo](#-demo)
-
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🔧 Features](#-features) 
 </div>
 
 ---
@@ -68,11 +67,6 @@ python cli.py --help
 ```
 
 ---
-
-## 🎮 Demo
-
-### Interactive Console
-![Console Demo](https://via.placeholder.com/800x400/2d3748/ffffff?text=Pryvon+Temp+Mail+Console)
 
 ### Command Line Interface
 ```bash
